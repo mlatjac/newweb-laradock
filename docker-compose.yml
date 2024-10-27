@@ -209,6 +209,10 @@ services:
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
         - docker-in-docker:/certs/client
+        - ${ASTERISK_HOST_LOG_PATH}:/var/log/asterisk
+        - ${DATA_PATH_HOST}/asterisk/spool:/var/spool/asterisk
+        - ${DATA_PATH_HOST}/asterisk/lib:/var/lib/asterisk
+        - ${ASTERISK_HOST_CONFIG_PATH}:/etc/asterisk
       extra_hosts:
         - "dockerhost:${DOCKER_HOST_IP}"
       ports:
